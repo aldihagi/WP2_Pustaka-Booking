@@ -1,0 +1,11 @@
+.post-container{
+    position:-ms-page;
+    width: fit-content;
+    border: 20px;
+    background: #ffff;
+    border-radius: 20px;
+    padding: 150px;
+    margin: 150px 0;
+    margin-left: 320px;
+    height: 200px;
+}
