@@ -110,7 +110,10 @@ class Autentifikasi extends CI_Controller
         //diinput akan disimpan ke dalam tabel user
         if ($this->form_validation->run() == false) {
             $data['judul'] = 'Registrasi Member';
-            $this->load->view('v_web');
+            $this->load->view('templates/aute_header', $data);
+            $this->load->view('autentifikasi/registerasi');
+            $this->load->view('templates/aute_footer');
+
             // $this->load->view('templates/aute_header', $data);
             // $this->load->view('autentifikasi/registrasi');
             // $this->load->view('templates/aute_footer');
