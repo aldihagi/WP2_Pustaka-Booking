@@ -1,5 +1,6 @@
-<!-- Begin Page Content -->
+<!-- begin page content -->
 <div class="container-fluid">
+
     <?= $this->session->flashdata('pesan'); ?>
     <div class="row">
         <div class="col-lg-3">
@@ -27,8 +28,7 @@
                             <td><?= $k['kategori']; ?></td>
                             <td>
                                 <a href="<?= base_url('buku/ubahBuku/') . $k['id']; ?>" class="badge badge-info"><i class="fas fa-edit"></i> Ubah</a>
-                                <a href="<?= base_url('buku/hapusbuku/') . $k['id']; ?>" onclick="return confirm('Kamu yakin akan menghapus <?= $judul . ' ' . $k['kategori']; ?> ?');" class="badge badge-danger"><i class="fas fa-trash"></i>
-                                    Hapus</a>
+                                <a href="<?= base_url('buku/hapusbuku/') . $k['id']; ?>" onclick="return confirm('Kamu yakin akan menghapus <?= $judul . ' ' . $k['kategori']; ?> ?');" class="badge badge-danger"><i class="fas fa-trash"></i> Hapus</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -40,7 +40,6 @@
 <!-- /.container-fluid -->
 </div>
 <!-- End of Main Content -->
-
 <!-- Modal Tambah kategori baru-->
 <div class="modal fade" id="kategoriBaruModal" tabindex="-1" role="dialog" aria-labelledby="kategoriBaruModalLabel" ariahidden="true">
     <div class="modal-dialog" role="document">
@@ -57,8 +56,7 @@
                         <select name="kategori" class="form-control form-control-user">
                             <option value="">Pilih Kategori</option>
                             <?php
-                            $k =
-                                ['Sains', 'Hobby', 'Komputer', 'Komunikasi', 'Hukum', 'Agama', 'Populer', 'Bahasa', 'Komik'];
+                            $k = ['Sains', 'Hobby', 'Komputer', 'Komunikasi', 'Hukum', 'Agama', 'Populer', 'Bahasa', 'Komik'];
                             for ($i = 0; $i < 9; $i++) { ?>
                                 <option value="<?= $k[$i]; ?>"><?= $k[$i]; ?></option>
                             <?php } ?>

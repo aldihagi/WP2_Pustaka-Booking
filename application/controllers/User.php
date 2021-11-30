@@ -1,16 +1,17 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+
 class User extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
-        cek_login();
+        $this->load->model(['ModelUser']);
+        // cek_login();
     }
-
     public function index()
     {
-        $data['judul'] = 'Profil Saya';
+        $data['judul'] = 'profil saya';
         $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -25,25 +26,22 @@ class User extends CI_Controller
         $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
         $this->db->where('role_id', 1);
         $data['anggota'] = $this->db->get('user')->result_array();
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('user/anggota', $data);
         $this->load->view('templates/footer');
     }
-
     public function ubahProfil()
     {
         $data['judul'] = 'Ubah Profil';
         $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
-        $this->form_validation->set_rules(
-            'nama',
-            'Nama Lengkap',
-            'required|trim',
-            [
-                'required' => 'Nama tidak Boleh Kosong'
-            ]
-        );
+
+        $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required|trim', [
+            'required' => 'Nama tidak Boleh Kosong'
+        ]);
+
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -78,10 +76,10 @@ class User extends CI_Controller
                 } else {
                 }
             }
-
             $this->db->set('nama', $nama);
             $this->db->where('email', $email);
             $this->db->update('user');
+
             $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Profil Berhasil diubah </div>');
             redirect('user');
         }

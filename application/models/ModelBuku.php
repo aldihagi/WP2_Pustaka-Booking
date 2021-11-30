@@ -27,23 +27,22 @@ class ModelBuku extends CI_Model
     public function total($field, $where)
     {
         $this->db->select_sum($field);
-        if(!empty($where) && count($where) > 0){
+        if (!empty($where) && count($where) > 0) {
             $this->db->where($where);
         }
-
-        $this->db->form('buku');
+        $this->db->from('buku');
         return $this->db->get()->row($field);
     }
 
     //manajemen kategori
     public function getKategori()
     {
-        return $this->db->get('katergori');
+        return $this->db->get('kategori');
     }
 
     public function kategoriWhere($where)
     {
-        return $this->db->get_where('katergori', $where);
+        return $this->db->get_where('kategori', $where);
     }
 
     public function simpanKategori($data = null)
@@ -70,5 +69,4 @@ class ModelBuku extends CI_Model
         $this->db->where($where);
         return $this->db->get();
     }
-
 }
