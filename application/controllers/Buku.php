@@ -6,7 +6,7 @@ class Buku extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // cek_login();
+        cek_login();
     }
     public function index()
     {
@@ -122,7 +122,7 @@ class Buku extends CI_Controller
 
     public function ubahBuku()
     {
-        $data['judul'] = 'Ubah Data Bukus';
+        $data['judul'] = 'Ubah Data Buku';
         $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
         $data['buku'] = $this->ModelBuku->bukuWhere(['id' => $this->uri->segment(3)])->result_array();
         $kategori = $this->ModelBuku->joinKategoriBuku(['buku.id' => $this->uri->segment(3)])->result_array();
