@@ -9,5 +9,18 @@ function cek_login()
         redirect('autentifikasi');
     } else {
         $role_id = $ci->session->userdata('role_id');
+        $id_user = $ci->session->userdata('id_user');
+    }
+}
+
+function cek_user()
+{
+    $ci = get_instance();
+
+    $role_id = $ci->session->userdata('role_id');
+    if ($role_id != 1) {
+        $ci->session->set_flashdata('pesan', '<div class="alert alert-denger"
+        role="alert>Akses tidak diizinkan </div>');
+        redirect('home');
     }
 }

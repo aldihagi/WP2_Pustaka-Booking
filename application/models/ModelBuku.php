@@ -9,6 +9,12 @@ class ModelBuku extends CI_Model
         return $this->db->get('buku');
     }
 
+    public function getLimitBuku()
+    {
+        $this->db->limit(5);
+        return $this->db->get('buku');
+    }
+
     public function bukuWhere($where)
     {
         return $this->db->get_where('buku', $where);
@@ -63,7 +69,7 @@ class ModelBuku extends CI_Model
     //join
     public function joinKategoriBuku($where)
     {
-        $this->db->select('buku.id_kategori,kategori.kategori');
+
         $this->db->from('buku');
         $this->db->join('kategori', 'kategori.id = buku.id_kategori');
         $this->db->where($where);
