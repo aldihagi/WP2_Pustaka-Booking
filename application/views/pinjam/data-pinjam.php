@@ -20,7 +20,6 @@
                         <?php
 
 
-
                         foreach ($pinjam as $p) {
                         ?>
                             <tr>
@@ -28,6 +27,7 @@
                                 <td><?= $p['tgl_pinjam']; ?></td>
                                 <td><?= $p['id_user']; ?></td>
                                 <td><?= $p['id_buku']; ?></td>
+
                                 <td><?= $p['tgl_kembali']; ?></td>
                                 <td>
                                     <?= date('Y-m-d'); ?>
@@ -48,14 +48,14 @@
                                 } else {
                                     $status = "secondary";
                                 } ?>
-                                <td><i class="btn btn-outline <?= $status; ?> btn-sm"><?= $p['status']; ?></i></td>
 
+                                <td><i class="btn btn-outline-<?= $status; ?> btn-sm"><?= $p['status']; ?></i></td>
 
                                 <?php
-                                if ($selisi < 0) {
+                                if ($selisih < 0) {
                                     $total_denda = $p['denda'] * 0;
                                 } else {
-                                    $total_denda = $p['demda'] * $selisih;
+                                    $total_denda = $p['denda'] * $selisih;
                                 }
                                 ?>
 
@@ -65,14 +65,12 @@
                                 <td nowrap>
                                     <?php if ($p['status'] == "Kembali") { ?>
                                         <i class="btn btn-sm btn-outline-secondary"><i class="fas fa-fw fa-edit"></i>Ubah Status</i>
-
                                     <?php } else { ?>
                                         <a class="btn btn-sm btn-outline-info" href="<?= base_url('pinjam/ubahStatus/' . $p['id_buku'] . '/' . $p['no_pinjam']); ?>"><i class="fas fa-fw fa-edit"></i>Ubah Status</a>
                                     <?php } ?>
                                 </td>
                             </tr>
-                        <?php
-                        } ?>
+                        <?php } ?>
                     </table>
                 </div>
             </td>

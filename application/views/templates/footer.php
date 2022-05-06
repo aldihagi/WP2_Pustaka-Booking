@@ -52,7 +52,7 @@
     $(document).ready(function() {
         $("#table-datatable").dataTable();
     });
-    $('.alert-message').alert().delay(3500).slideUp('slow');
+    $('.alert-message').alert().delay(3000).slideUp('slow');
 </script>
 </body>
 
