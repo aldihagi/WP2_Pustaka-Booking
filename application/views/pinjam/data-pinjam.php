@@ -27,7 +27,6 @@
                                 <td><?= $p['tgl_pinjam']; ?></td>
                                 <td><?= $p['id_user']; ?></td>
                                 <td><?= $p['id_buku']; ?></td>
-
                                 <td><?= $p['tgl_kembali']; ?></td>
                                 <td>
                                     <?= date('Y-m-d'); ?>
